@@ -41,7 +41,7 @@ if(isset($_GET['enviar'])){
     $consulta = $con->query("SELECT * FROM tabla WHERE Nombre LIKE '$Busqueda'");
 
     while ($row = $consulta->fetch_array()){
-        <th><?php  echo $row['Nombre']?></th>
+        echo $row['Nombre'];
         echo $row['Apellidos'];
         echo $row['RUT'];
 

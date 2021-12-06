@@ -2,16 +2,14 @@
 include("conexion.php");
 $con=conectar();
 
-
 $Nombre=$_POST['Nombre'];
 $Apellidos=$_POST['Apellidos'];
-$Sexo=$_POST['Sexo'];
-$Direccion=$_POST['Direccion'];
-$Edad=$_POST['Edad'];
 $FNacimiento=$_POST['FNacimiento'];
-$RUT=$_POST['RUT'];
+$Correo=$_POST['Correo'];
+$Pass=$_POST['Pass'];
+$id=$_POST['id'];
 
-$sql="UPDATE tabla SET Nombre='$Nombre',Apellidos='$Apellidos',Sexo='$Sexo',Direccion='$Direccion',Edad='$Edad',FNacimiento='$FNacimiento' WHERE RUT='$RUT'";
+$sql="UPDATE tabla SET Nombre='$Nombre',Apellidos='$Apellidos',FNacimiento='$FNacimiento',Correo='$Correo' WHERE id='$id'";
 $query=mysqli_query($con,$sql);
 
 if($query){

@@ -5,7 +5,7 @@
 	$sql="SELECT * FROM tabla";
 	$query=mysqli_query($con,$sql);
 
-	$row=mysqli_fetch_array($query);
+
 ?>
 
 <!DOCTYPE html>
@@ -62,11 +62,11 @@
 
     <!--formulario-->
 
-	<div class="container mt-5">
+    <div class="container border-primary shadow p-3 mb-5 bg-body rounded">
       <div class="row">
-
         <div class="col-md-3">
           <form action="insertar.php" method="POST">
+            
             <div class="mb-3">
             <label for="Nombre" class="form-label">Nombre</label>
             <input type="text" class="form-control" name="Nombre" id="Nombre">
@@ -78,29 +78,19 @@
             </div>
             
             <div class="mb-3">
-            <label for="Sexo" class="form-label">Género</label>
-            <input type="text" class="form-control" name="Sexo" id="Sexo">
-            </div>
-  
-            <div class="mb-3">
-            <label for="Direccion" class="form-label">Dirección</label>
-            <input type="text" class="form-control" name="Direccion" id="Direccion">
-            </div>
-  
-            <div class="mb-3">
-            <label for="Edad" class="form-label">Edad</label>
-            <input type="number" min="1" max="120" class="form-control" name="Edad" id="Edad">
-            </div>
-  
-            <div class="mb-3">
             <label for="FNacimiento" class="form-label">Fecha de nacimiento</label>
             <input type="date" class="form-control" name="FNacimiento" id="FNacimiento">
-            </div>
-  
+            </div> 
+
             <div class="mb-3">
-            <label for="RUT" class="form-label">RUT o Identificación</label>
-            <input type="text" class="form-control" name="RUT" id="RUT">
-            </div>        
+              <label for="Correo"  class="form-label"> Correo </label>
+              <input type="email" class="form-control" name="Correo" id="Correo">
+            </div>
+
+            <div class="mb-3">
+            <label for="Pass" class="form-label">Password</label>
+            <input type="password" class="form-control" name="Pass" id="Pass">
+            </div>   
   
           <button type="submit" class="btn btn-primary">Registrar</button>
           <a href="buscar.php" class="btn btn-primary">Buscar</a>
@@ -114,13 +104,10 @@
 					<tr>
 						<th>Nombre</th>
 						<th>Apellidos</th>
-						<th>Género</th>
-						<th>Dirección</th>
-						<th>Edad</th>
 						<th>Fecha de Nacimiento</th>
-						<th>RUT</th>
+						<th>Email</th>
 						<th></th>
-						<th></th>
+            <th></th>
 					</tr>
 				</thead>
 
@@ -131,13 +118,12 @@
 							<tr>
 								<th><?php  echo $row['Nombre']?></th>
 								<th><?php  echo $row['Apellidos']?></th>
-								<th><?php  echo $row['Sexo']?></th>
-								<th><?php  echo $row['Direccion']?></th>
-								<th><?php  echo $row['Edad']?></th>
 								<th><?php  echo $row['FNacimiento']?></th>
-								<th><?php  echo $row['RUT']?></th>  
-								<th><a href="actualizar.php?id=<?php echo $row['RUT'] ?>" class="btn btn-info">Editar</a></th>
-								<th><a href="delete.php?id=<?php echo $row['RUT'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
+                <th><?php  echo $row['Correo']?></th>
+                   
+
+								<th><a href="actualizar.php?id=<?php echo $row['id'] ?>" class="btn btn-info">Modificar</a></th>
+								<th><a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
 							</tr>
 						<?php 
 							}

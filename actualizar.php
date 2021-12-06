@@ -4,7 +4,7 @@
 
 $id=$_GET['id'];
 
-$sql="SELECT * FROM tabla WHERE RUT='$id'";
+$sql="SELECT * FROM tabla WHERE id='$id'";
 $query=mysqli_query($con,$sql);
 
 $row=mysqli_fetch_array($query);
@@ -25,14 +25,12 @@ $row=mysqli_fetch_array($query);
         <div class="container mt-5">
             <form action="update.php" method="POST">
             
-                <input type="hidden" name="RUT" value="<?php echo $row['RUT']  ?>">
+                <input type="hidden" name="id" value="<?php echo $row['id']  ?>">
                 <input type="text" class="form-control mb-3" name="Nombre" placeholder="Nombre" value="<?php echo $row['Nombre']  ?>">
                 <input type="text" class="form-control mb-3" name="Apellidos" placeholder="Apellidos" value="<?php echo $row['Apellidos']  ?>">
-                <input type="text" class="form-control mb-3" name="Sexo" placeholder="Sexo" value="<?php echo $row['Sexo']  ?>">
-                <input type="text" class="form-control mb-3" name="Direccion" placeholder="Direccion" value="<?php echo $row['Direccion']  ?>">
-                <input type="number" class="form-control mb-3" name="Edad" placeholder="Edad" value="<?php echo $row['Edad']  ?>">
                 <input type="date" class="form-control mb-3" name="FNacimiento" placeholder="Fecha de Nacimiento" value="<?php echo $row['FNacimiento']  ?>">
-                        
+                <input type="email" class="form-control mb-3" name="Correo" placeholder="Correo" value="<?php echo $row['Correo']   ?>">
+
                 <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
             </form>
             
