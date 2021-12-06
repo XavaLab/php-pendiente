@@ -29,7 +29,7 @@ $row=mysqli_fetch_array($query);
                 <input type="text" class="form-control mb-3" name="Nombre" placeholder="Nombre" value="<?php echo $row['Nombre']  ?>">
                 <input type="text" class="form-control mb-3" name="Apellidos" placeholder="Apellidos" value="<?php echo $row['Apellidos']  ?>">
                 <input type="date" class="form-control mb-3" name="FNacimiento" placeholder="Fecha de Nacimiento" value="<?php echo $row['FNacimiento']  ?>">
-                <input type="email" class="form-control mb-3" name="Correo" placeholder="Correo" value="<?php echo $row['Correo']   ?>">
+                <input type="email" class="form-control mb-3" name="Mail" placeholder="Mail" value="<?php echo $row['Mail']   ?>">
 
                 <input type="submit" class="btn btn-primary btn-block" value="Actualizar">
             </form>

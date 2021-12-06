@@ -53,29 +53,22 @@
     <!--formulario-->
 
     <div class="container-sm">
-      <form class="form-horizontal" action="registro.html">
+      <form class="form-horizontal" action="validar.php" method="get">
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <label for="Mail" class="form-label">Email</label>
+          <input type="email" class="form-control" id="Mail" aria-describedby="emailHelp" name="Mail">
           <div id="emailHelp" class="form-text">No compartas tu correo con cualquiera.</div>
         </div>
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1">
+          <label for="Pass" class="form-label">Password</label>
+          <input type="password" class="form-control" id="Pass" name="Pass">
         </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <div class="checkbox">
-              <label><input type="checkbox"> Recuérdame</label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-sm-offset-2 col-sm-10">
-            <button type="button" class="btn btn-success">Ingrese</button>
-            <button type="submit" class="btn btn-success">Crear Cuenta</button>
-          </div>
-        </div>
+
+        <input class="w-100 btn btn-lg btn-outline-success" type="submit" value="Entrar">
+        <a class="w-100 btn btn-lg btn-outline-success" href="registro.php">Crear cuenta</a>
+        <br> <br>
+        <a class=" btn btn-success" href="recuperar.php">Recuperar contraseña</a>
+
       </form>
     </div>
 
