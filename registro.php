@@ -58,14 +58,18 @@
     <img src="img/Imagen1.png" height="200px">
         <p class="fw-bolder text-white-50 fs-5">Cómete el mundo</p> 
   </div>
-  <br><br>
-
+  <br>
+  
+    <div class="container text-center">
+        <h1 class="display-1">Registro de usuarios nuevos</h1>
+    </div>
+    <br>
 
     <!--formulario-->
 
     <div class="container border-primary shadow p-3 mb-5 bg-body rounded">
       <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-12">
           <form action="insertar.php" method="POST">
             
             <div class="mb-3">
@@ -94,45 +98,14 @@
             </div>   
   
           <button type="submit" class="btn btn-success">Registrar</button>
-          <a href="buscar.php" class="btn btn-success">Buscar</a> 
+          <a href="search.php" class="btn btn-success">Buscar</a> 
           <br><br>
           <a href="index.php" class="btn btn-success">Regresar</a>
+          <a href="tabla.php" class="btn btn-success">Consultar Tabla</a>
           
           </form>
         </div>
 
-		<div class="col-md-8">
-			<table class="table" >
-				<thead class="table-success table-striped" >
-					<tr>
-						<th>Nombre</th>
-						<th>Apellidos</th>
-						<th>Fecha de Nacimiento</th>
-						<th>Mail</th>
-						<th></th>
-            <th></th>
-					</tr>
-				</thead>
-
-				<tbody>
-						<?php
-							while($row=mysqli_fetch_array($query)){
-						?>
-							<tr>
-								<th><?php  echo $row['Nombre']?></th>
-								<th><?php  echo $row['Apellidos']?></th>
-								<th><?php  echo $row['FNacimiento']?></th>
-                <th><?php  echo $row['Mail']?></th>
-                   
-								<th><a href="actualizar.php?id=<?php echo $row['id'] ?>" class="btn btn-info">Modificar</a></th>
-								<th><a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
-							</tr>
-						<?php 
-							}
-						?>
-				</tbody>
-			</table>
-		</div>
 
       </div>
     </div> 

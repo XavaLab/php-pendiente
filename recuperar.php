@@ -4,13 +4,10 @@
 
 $Mail=$_GET['id'];
 
-
-$sql="SELECT * FROM tabla WHERE Mail='$Mail'";
-
+$sql="SELECT * FROM tabla WHERE Nombre='$Mail'";
 $query=mysqli_query($con,$sql);
 
 $row=mysqli_fetch_array($query);
-
 ?>
 
 <!DOCTYPE html>
@@ -67,11 +64,12 @@ $row=mysqli_fetch_array($query);
   <div class="container">
   <div class="row ">
 
-    <div class="col-md-6">
-      <h1 class="text-center">Bienvenid@ a Comida Facilita</h1>
+
+    <div class="container text-center">
+        <h1 class="display-1">Recuperar Contraseña</h1>
     </div>
 
-    <div class="col-md-6">
+    <div class="col-md-12">
 <style>
     #centrar{
         margin-left: auto;
@@ -93,8 +91,8 @@ $row=mysqli_fetch_array($query);
           </div>
               <br>
               <hr>
-            <a class="btn btn-warning" href="index.php" >Volver</a>
-            <input class="btn btn-warning" type="submit" name="enviar" value="Recuperar">
+            <a class="btn btn-success" href="index.php" >Volver</a>
+            <input class="btn btn-success" type="submit" name="enviar" value="Recuperar">
           </form> 
       
         </div>
@@ -193,7 +191,7 @@ $row=mysqli_fetch_array($query);
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2020 Copyright:
+      © 2021 Copyright:
       <a class="text-white" href="...">XAVA.lab</a>
     </div>
     <!-- Copyright -->
