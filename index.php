@@ -64,10 +64,10 @@
           <input type="password" class="form-control" id="Pass" name="Pass">
         </div>
 
-        <input class="w-100 btn btn-lg btn-outline-success" type="submit" value="Entrar">
-        <a class="w-100 btn btn-lg btn-outline-success" href="registro.php">Crear cuenta</a>
-        <br> <br>
-        <a class=" btn btn-success" href="recuperar.php">Recuperar contraseña</a>
+        <input class="btn btn-lg btn-outline-success" type="submit" value="Entrar">
+        <a class="btn btn-lg btn-outline-success" href="registro.php">Crear cuenta</a>
+        
+        <a class="btn btn-lg btn-outline-success" href="recuperar.php">Recuperar contraseña</a>
 
       </form>
     </div>

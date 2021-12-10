@@ -1,10 +1,15 @@
-<?php
-	include("conexion.php");
-	$con=conectar();
+<?php 
+    include("conexion.php");
+    $con=conectar();
 
-	$sql="SELECT * FROM tabla";
-	$query=mysqli_query($con,$sql);
+$Mail=$_GET['id'];
 
+
+$sql="SELECT * FROM tabla WHERE Mail='$Mail'";
+
+$query=mysqli_query($con,$sql);
+
+$row=mysqli_fetch_array($query);
 
 ?>
 
@@ -28,7 +33,7 @@
     <!-- MDB -->
     <link rel="stylesheet" href="css/mdb.min.css" />
 
-    <title>&#129386 Registro</title>
+    <title>&#129386 Recupera tu contraseña</title>
   </head>
 <body>
 	    <!--Navbar-->
@@ -58,86 +63,70 @@
     <img src="img/Imagen1.png" height="200px">
         <p class="fw-bolder text-white-50 fs-5">Cómete el mundo</p> 
   </div>
-  <br><br>
 
+  <div class="container">
+  <div class="row ">
 
-    <!--formulario-->
+    <div class="col-md-6">
+      <h1 class="text-center">Bienvenid@ a Comida Facilita</h1>
+    </div>
 
-    <div class="container border-primary shadow p-3 mb-5 bg-body rounded">
-      <div class="row">
-        <div class="col-md-3">
-          <form action="insertar.php" method="POST">
+    <div class="col-md-6">
+<style>
+    #centrar{
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
+
+<div class="container border-primary shadow p-3 mb-5 bg-body rounded" id="centrar" style="width: 300px" >
+    <div class="row" id="centrar">
+        <div class="col" id="centrar">
             
-            <div class="mb-3">
-            <label for="Nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" name="Nombre" id="Nombre">
-            </div>
-  
-            <div class="mb-3">
-            <label for="Apellidos" class="form-label">Apellidos</label>
-            <input type="text" class="form-control" name="Apellidos" id="Apellidos">
-            </div>
-            
-            <div class="mb-3">
-            <label for="FNacimiento" class="form-label">Fecha de nacimiento</label>
-            <input type="date" class="form-control" name="FNacimiento" id="FNacimiento">
-            </div> 
-
-            <div class="mb-3">
-              <label for="Mail"  class="form-label">Correo</label>
-              <input type="email" class="form-control" name="Mail" id="Mail" aria-describedby="emailHelp">
-            </div>
-
-            <div class="mb-3">
-            <label for="Pass" class="form-label">Password</label>
-            <input type="password" class="form-control" name="Pass" id="Pass">
-            </div>   
-  
-          <button type="submit" class="btn btn-success">Registrar</button>
-          <a href="buscar.php" class="btn btn-success">Buscar</a> 
-          <br><br>
-          <a href="index.php" class="btn btn-success">Regresar</a>
-          
-          </form>
+          <form action="" method="get" id="centrar">
+          <div class="mb-3">
+                          <h2>Recuperar Contraseña</h2>
+                          <hr><br>
+                          
+                          <input type="email" class="form-control" id="Mail" name="busqueda" placeholder="Email">
+                          <input type="text" class="form-control" id="Nombre" name="busqueda1" placeholder="Nombre">
+          </div>
+              <br>
+              <hr>
+            <a class="btn btn-warning" href="index.php" >Volver</a>
+            <input class="btn btn-warning" type="submit" name="enviar" value="Recuperar">
+          </form> 
+      
         </div>
+    </div>
 
-		<div class="col-md-8">
-			<table class="table" >
-				<thead class="table-success table-striped" >
-					<tr>
-						<th>Nombre</th>
-						<th>Apellidos</th>
-						<th>Fecha de Nacimiento</th>
-						<th>Mail</th>
-						<th></th>
-            <th></th>
-					</tr>
-				</thead>
+        <?php
 
-				<tbody>
-						<?php
-							while($row=mysqli_fetch_array($query)){
-						?>
-							<tr>
-								<th><?php  echo $row['Nombre']?></th>
-								<th><?php  echo $row['Apellidos']?></th>
-								<th><?php  echo $row['FNacimiento']?></th>
-                <th><?php  echo $row['Mail']?></th>
-                   
-								<th><a href="actualizar.php?id=<?php echo $row['id'] ?>" class="btn btn-info">Modificar</a></th>
-								<th><a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></th>                                        
-							</tr>
-						<?php 
-							}
-						?>
-				</tbody>
-			</table>
-		</div>
+        if(isset($_GET['enviar'])){
+            
+            $busqueda=$_GET['busqueda'];
+            $busqueda1=$_GET['busqueda1'];
+            
+            $consulta=$con->query("SELECT * FROM tabla WHERE Mail LIKE '$busqueda'");
+            $consulta1=$con->query("SELECT * FROM tabla WHERE Nombre LIKE BINARY '$busqueda1'");
 
-      </div>
-    </div> 
-    <!--footer-->
-<!-- Remove the container if you want to extend the Footer to full width. -->
+            if($row=$consulta->fetch_array() and $row=$consulta1->fetch_array()){
+                echo "Su contraseña es: ";
+                echo $row['Pass'];
+            }
+            else{
+                echo "Error: Datos no corresponden a usuario registrado";
+            }
+        }
+        ?>
+</div>
+    </div>
+
+  </div>
+</div>
+
+  <!--Footer-->
+
 <div class="container my-5">
 
   <footer class="bg-light text-center text-white">
@@ -204,7 +193,7 @@
 
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-      © 2021 Copyright:
+      © 2020 Copyright:
       <a class="text-white" href="...">XAVA.lab</a>
     </div>
     <!-- Copyright -->
@@ -213,21 +202,15 @@
   </div>
   <!-- End of .container -->
 
-
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <!-- MDB -->
-    <script type="text/javascript" src="js/mdb.min.js"></script>
-    <!-- Custom scripts -->
-    <script type="text/javascript"></script>
 
     <!-- Option 2: Separate Popper and Bootstrap JS -->
     <!--
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
-</body>
+  </body>
 </html>
